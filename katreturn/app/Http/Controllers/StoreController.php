@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Redirect;
+use App\Store;
 
-use App\Book;
 
-class BookController extends Controller
+
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class BookController extends Controller
     public function index()
     {
         //
-        $books = Book::all();
-        return view('books.index',[
-                'books' => $books
+      $stores = Store::all();
+        return view('stores.index',[
+                'stores' => $stores
             ]);
     }
 
@@ -31,7 +32,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        return view('books.create');
+        return view('stores.create');
     }
 
     /**
@@ -42,14 +43,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $book = new Book();
-        $book->name = $request->name;
-        $book->detail = $request->detail;
-        $book->rate = $request->rate;
-        $book->save();
+        $store = new Store();
+        $store->title = $request->title;
+        $store->price = $request->price;
+      
+        $store->save();
 
-        return Redirect('book');
+        return Redirect('store');
     }
 
     /**
@@ -60,10 +60,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
-        $book = Book::find($id);
-        return view('books.show',[
-                'book' => $book
+        $store = Store::find($id);
+        return view('stores.show',[
+                'store' => $store
             ]);
     }
 
@@ -76,9 +75,9 @@ class BookController extends Controller
     public function edit($id)
     {
         //
-        $book = Book::find($id);
-        return view('books.edit',[
-                'book' => $book
+         $store = Store::find($id);
+        return view('stores.edit',[
+                'store' => $store
             ]);
     }
 
@@ -92,13 +91,13 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $book = Book::find($id);
-        $book->name = $request->name;
-        $book->detail = $request->detail;
-        $book->rate = $request->rate;
-        $book->save();
+        $store = Store::find($id);
+        $store->title = $request->title;
+        $store->price = $request->price;
+      
+        $store->save();
 
-        return Redirect('book');
+        return Redirect('store');
     }
 
     /**
@@ -110,9 +109,10 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
-        $book = Book::find($id);
-        $book->delete();
+
+          $store = Store::find($id);
+        $store->delete();
         
-        return Redirect('book');
+        return Redirect('store');
     }
 }

@@ -33,8 +33,10 @@ Route::get('carsletter/{name}', function($name){
 return "Wellcom define name Car : ".$name;
 })->where('name','[A-Za-z]+');
 
+
 Route::resource('book','BookController');
-Route::resource('book/create','BookController@create');
+Route::resource('store', 'StoreController');
+
 
 
 

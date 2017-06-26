@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Store extends Model
 {
-	protected $table = 'books';
+   	protected $table = 'stores';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'detail', 
-        'rate',
+        'title', 
+        'price', 
+       
     ];
 }
